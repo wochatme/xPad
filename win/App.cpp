@@ -10,6 +10,7 @@
 #include <atlscrl.h>
 
 #include "resource.h"
+#include "App.h"
 
 #include "View.h"
 #include "WinDlg.h"
@@ -38,11 +39,15 @@ static int AppRun(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 
 static int AppInit(HINSTANCE hInstance)
 {
+	if (Scintilla_RegisterClasses(hInstance) == 0)
+		return 1;
+
 	return 0;
 }
 
 static int AppTerm(HINSTANCE hInstance = NULL)
 {
+	Scintilla_ReleaseResources();
 	return 0;
 }
 

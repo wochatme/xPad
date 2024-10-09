@@ -11,9 +11,8 @@ class CMainFrame :
 {
 public:
 	DECLARE_FRAME_WND_CLASS(NULL, IDR_MAINFRAME)
-#if 0
+
 	CView m_view;
-#endif 
 
 	virtual BOOL PreTranslateMessage(MSG* pMsg)
 	{
@@ -57,6 +56,7 @@ public:
 
 	LRESULT OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 	{
+		DWORD dwStyle = WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_HSCROLL | WS_VSCROLL;
 #if 0
 		// create command bar window
 		HWND hWndCmdBar = m_CmdBar.Create(m_hWnd, rcDefault, NULL, ATL_SIMPLE_CMDBAR_PANE_STYLE);
@@ -86,6 +86,8 @@ public:
 		ATLASSERT(pLoop != NULL);
 		pLoop->AddMessageFilter(this);
 		pLoop->AddIdleHandler(this);
+
+		m_hWndClient = m_view.Create(m_hWnd, rcDefault, NULL, dwStyle);
 
 		return 0;
 	}

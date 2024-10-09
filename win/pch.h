@@ -42,12 +42,29 @@ extern CAppModule _Module;
 #include <cmath>
 #include <stack>
 
+#include <d2d1.h>
+#include <d2d1_1.h>
+#include <d2d1_3.h>
+#include <dwrite.h>
+#include <d3d11.h>
+#include <dxgi.h>
+#include <dcomp.h>
+#pragma comment(lib, "d2d1.lib")
+#pragma comment(lib, "dwrite.lib")
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "Dcomp.lib")
+
+#include <dwmapi.h>
 #include <uxtheme.h>
 #include <vssym32.h>
 #pragma comment(lib, "user32.lib")
 #pragma comment(lib, "gdi32.lib")
+#pragma comment(lib, "Dwmapi.lib")
 #pragma comment(lib, "uxtheme.lib")
 #pragma comment(lib, "Imm32.lib")
+
+#include "scintilla/include/Sci_Position.h"
+#include "scintilla/include/scintilla.h"
 
 #if defined _M_IX86
   #pragma comment(linker, "/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")
