@@ -5,10 +5,20 @@
 #define IDC_BTN_BROWSER                 3
 #define IDC_BTN_FONT                    4
 #define IDCANCEL4                       5
-#define IDD_ABOUTBOX                    100
+
+#define IDD_ABOUTDLG                    100
+#define IDD_OPENURL	                    101
 #define IDR_MAINFRAME                   128
-#define IDD_CONFIGURAION                201
-#define IDD_OPENURL                     203
+
+#define IDC_EDIT_URL					130
+
+#define IDM_DARKMODE	                (0x100)
+#define IDM_OPENURL                     (0x110)
+#define IDM_OPENFILE	                (0x120)
+#define IDM_ABOUTAPP	                (0x130)
+
+
+#if 0
 #define IDC_EDIT_MY_PUBKEY              1001
 #define IDC_EDIT_SERVER_URL             1002
 #define IDC_EDIT_DATA_DIRECTORY         1003
@@ -26,7 +36,7 @@
 #define IDC_EDIT_URL                    1016
 #define IDC_EDIT2                       1017
 #define IDC_EDIT_KBDATA                 1018
-
+#endif 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED

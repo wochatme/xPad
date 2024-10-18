@@ -1,7 +1,13 @@
 #pragma once
 
+#include "ztlib.h"
+#include "Setting.h"
+#include "Network.h"
+
 extern "C" IMAGE_DOS_HEADER __ImageBase;
 #define HINST_THISCOMPONENT ((HINSTANCE)&__ImageBase)
+
+#define WM_WINEVENT				(WM_USER + 100)
 
 /* ZT_ALIGN() is only to be used to align on a power of 2 boundary */
 #define ZT_ALIGN(size, boundary)   (((size) + ((boundary) -1)) & ~((boundary) - 1))
@@ -44,4 +50,24 @@ inline T DLLFunction(HMODULE hModule, LPCSTR lpProcName) noexcept {
 	memcpy(&fp, &function, sizeof(T));
 	return fp;
 }
+
+extern DWORD guiState;
+
+extern ID2D1Factory1* g_pD2DFactory;
+
+#define GUISTATE_DARKMODE		(0x00000001)
+#define GUISTATE_TOPMOST		(0x00000002)
+#define GUISTATE_DRAGFULL		(0x00000004)
+#define GUISTATE_DOCREADY		(0x00000008)
+
+inline bool AppIsDocIdReady()
+{
+	return static_cast<bool>(guiState & GUISTATE_DOCREADY);
+}
+
+inline void AppSetDocIdReady(bool ready = true)
+{
+	guiState = ready ? (guiState | GUISTATE_DOCREADY) : (guiState & ~GUISTATE_DOCREADY);
+}
+
 

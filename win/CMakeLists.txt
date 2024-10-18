@@ -6,6 +6,8 @@ add_definitions(-D_UNICODE -DUNICODE -DNOMINMAX)
 add_executable(${PROJECT_NAME} WIN32 
 	App.cpp
 	pch.cpp
+	Network.cpp
+	Setting.cpp
 	App.rc
 	)
 
@@ -21,5 +23,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 	${CMAKE_SOURCE_DIR}
 	)
 
+target_link_libraries(${PROJECT_NAME} libzt)
 target_link_libraries(${PROJECT_NAME} scintilla)
+target_link_libraries(${PROJECT_NAME} zlibstatic)
+target_link_libraries(${PROJECT_NAME} libcurl_static)
 

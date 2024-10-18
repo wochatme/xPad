@@ -138,14 +138,16 @@ BEGIN
     GROUPBOX        "",IDC_STATIC,7,7,115,88
 END
 
-/* Accelerators used: aco */
-IDD_MAINBOX DIALOG DISCARDABLE 0, 0, 300, 252
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "PuTTY Configuration"
-FONT 8, "MS Shell Dlg"
-CLASS "PuTTYConfigBox"
+IDD_OPENURL DIALOGEX 0, 0, 419, 52
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Open URL\tExample: https://zterm.ai/t/d98a6519951a45df"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
+EDITTEXT        IDC_EDIT_URL, 7, 7, 405, 14, ES_AUTOHSCROLL
+DEFPUSHBUTTON   "OK", IDOK, 308, 29, 50, 14
+PUSHBUTTON      "Cancel", IDCANCEL, 362, 29, 50, 14
 END
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // DESIGNINFO
@@ -193,14 +195,6 @@ BEGIN
     "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
     "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
     "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
-    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
-    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
-    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
-    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
-    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
-    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
-    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
-    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
     VK_F6,          ID_NEXT_PANE,           VIRTKEY 
     VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
 END

@@ -125,6 +125,9 @@ extern "C" {
 
 	int zt_Raw2HexString(U8* input, U8 len, U8* output, U8* outlen);
 
+	bool zt_IsAlphabetStringW(wchar_t*, U8);
+	bool zt_HexString2RawW(wchar_t*, U8, U8*, U8*);
+
 #ifdef __cplusplus
 }
 #endif

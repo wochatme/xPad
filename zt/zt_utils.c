@@ -122,6 +122,39 @@ U32 zt_HexString2Raw(U8* input, U8 len, U8* output, U8* outlen)
 	return ZT_OK;
 }
 
+bool zt_HexString2RawW(wchar_t* input, U8 len, U8* output, U8* outlen)
+{
+	wchar_t oneChar, hiValue, lowValue;
+
+	for (U8 i = 0; i < len; i += 2)
+	{
+		oneChar = input[i];
+		if (oneChar >= L'0' && oneChar <= L'9')
+			hiValue = oneChar - L'0';
+		else if (oneChar >= L'a' && oneChar <= L'f')
+			hiValue = (oneChar - L'a') + 0x0A;
+		else if (oneChar >= L'A' && oneChar <= L'F')
+			hiValue = (oneChar - L'A') + 0x0A;
+		else return false;
+
+		oneChar = input[i + 1];
+		if (oneChar >= L'0' && oneChar <= L'9')
+			lowValue = oneChar - L'0';
+		else if (oneChar >= L'a' && oneChar <= L'f')
+			lowValue = (oneChar - L'a') + 0x0A;
+		else if (oneChar >= L'A' && oneChar <= L'F')
+			lowValue = (oneChar - L'A') + 0x0A;
+		else return false;
+
+		output[(i >> 1)] = (hiValue << 4 | lowValue);
+	}
+
+	if (outlen)
+		*outlen = (len >> 1);
+
+	return true;
+}
+
 bool zt_IsPublicKey(U8* str, const U8 len)
 {
 	bool bRet = false;
